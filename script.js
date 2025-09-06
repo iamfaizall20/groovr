@@ -44,26 +44,22 @@ const songs = [
 ];
 
 
-// Song Details
 const title = document.querySelector('.phonk-title');
 const author = document.querySelector('.author');
 const audio = document.querySelector('.phonk');
 const image = document.querySelector('.phonk-img');
 
-// Controls
 const previous = document.querySelector('.previous-icon i');
 const play = document.querySelector('.play-icon');
 const pause = document.querySelector('.pause-icon');
 const next = document.querySelector('.forward-icon i');
 
-// Timings & Progress bar
 let currentTimeEl = document.querySelector('.current-time');
 let endTimeEl = document.querySelector('.end-time');
 let progressBar = document.querySelector('.progress-fill');
 
 let songIndex = 0;
 
-// Helper → format seconds as mm:ss
 function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return "0:00";
     const mins = Math.floor(seconds / 60);
@@ -71,7 +67,6 @@ function formatTime(seconds) {
     return `${mins}:${secs}`;
 }
 
-// Load song info
 function updateSong(index) {
     title.textContent = songs[index].title;
     author.textContent = songs[index].author;
@@ -79,7 +74,6 @@ function updateSong(index) {
     image.src = songs[index].img;
 }
 
-// Next / Previous
 function nextSong() {
     if (songIndex < songs.length - 1) {
         songIndex++;
@@ -96,7 +90,6 @@ function prevSong() {
     }
 }
 
-// Play / Pause
 function playSong() {
     updateSong(songIndex);
     audio.play();
@@ -109,13 +102,11 @@ function pauseSong() {
     play.style.display = "flex";
 }
 
-// Event listeners for buttons
 previous.addEventListener('click', prevSong);
 next.addEventListener('click', nextSong);
 play.addEventListener('click', playSong);
 pause.addEventListener('click', pauseSong);
 
-// When page loads
 document.addEventListener('DOMContentLoaded', () => {
     updateSong(songIndex);
 
